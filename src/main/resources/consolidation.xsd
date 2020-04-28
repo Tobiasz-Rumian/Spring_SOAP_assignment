@@ -1,0 +1,63 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="demo.example.com"
+           targetNamespace="demo.example.com" elementFormDefault="qualified">
+
+    <xs:element name="getUserLoansResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="loans" type="tns:loan" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getUserLoansRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="userId" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="calculateOfferResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="offer" type="tns:offer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="calculateOfferRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="selectedLoans" type="tns:loan" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="acceptOfferResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="accepted" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="acceptOfferRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="offer" type="tns:offer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="loan">
+        <xs:sequence>
+            <xs:element name="accountNumber" type="xs:string"/>
+            <xs:element name="remainingAmount" type="xs:double"/>
+            <xs:element name="currency" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="offer">
+        <xs:sequence>
+            <xs:element name="loanAmount" type="xs:double"/>
+            <xs:element name="numberOfPayments" type="xs:int"/>
+            <xs:element name="monthlyAmount" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
